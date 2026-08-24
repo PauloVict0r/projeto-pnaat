@@ -54,12 +54,13 @@ void imu_task_code(void *pvParameter) {
 
       current_imu_data.timestamp_us = imu.timestamp_us;
 
-      /* Saída para Edge Impulse data forwarder (apenas números separados por vírgula) */
+      /* Saída para Edge Impulse data forwarder omitida na fase de inferência
       printf("%.4f,%.4f,%.4f,%.4f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.1f,%.1f,%.1f\n",
              imu.quat_w, imu.quat_x, imu.quat_y, imu.quat_z,
              imu.grav_x, imu.grav_y, imu.grav_z,
              imu.lin_accel_x, imu.lin_accel_y, imu.lin_accel_z,
              imu.roll, imu.pitch, imu.yaw);
+      */
 
       /* Exibição resumida no OLED removida para dar lugar apenas à classificação
       printf_oled(

@@ -63,10 +63,6 @@ extern "C" void app_main(void) {
                     const char *best_label = "Unknown";
                     
                     for (uint16_t i = 0; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
-                        ei_printf(" %s: %.5f\n",
-                                  result.classification[i].label,
-                                  result.classification[i].value);
-                                  
                         if (result.classification[i].value > max_val) {
                             max_val = result.classification[i].value;
                             best_label = result.classification[i].label;
@@ -74,6 +70,13 @@ extern "C" void app_main(void) {
                     }
                     
                     printf_oled("Estado Atual:\n%s\n%.0f%%", best_label, max_val * 100.0f);
+                    
+                    // Exibe no terminal no mesmo estilo centralizado e limpo
+                    printf("\n========================\n");
+                    printf("      Estado Atual:     \n");
+                    printf("        %s\n", best_label);
+                    printf("        %.0f%%\n", max_val * 100.0f);
+                    printf("========================\n");
                 }
 
                 int elementos_para_mover = EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE - STRIDE_SIZE;
